@@ -8,6 +8,10 @@ const useConversation=create((set)=>({
     setMessage:(messages) => set({messages}),
     isGroup:false,
     setIsGroup:(isGroup)=>set({isGroup}),
+    url:"https://message-chat-app-backend.onrender.com",
+    setBaseUrl:(url)=>set({url}),
+
+
 }))
 
 export default useConversation;

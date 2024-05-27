@@ -19,7 +19,7 @@ function useSendMessages() {
     const token=localStorage.getItem('token');
 
     try {
-    const res = await fetch(`http://localhost:5000/api/${isGroup?"group":"message"}/sendMessage/${selectedConversation._id}`,{
+    const res = await fetch(`${url}/api/${isGroup?"group":"message"}/sendMessage/${selectedConversation._id}`,{
     method: "POST",
     headers: { "Content-Type": "application/json",'Authorization':token, },
     body: JSON.stringify({getMessage}),

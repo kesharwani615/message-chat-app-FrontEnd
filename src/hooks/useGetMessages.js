@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const useGetMessages = () => {
 	const [loading, setLoading] = useState(false);
 	
-	const { messages, setMessage,selectedConversation} = useConversation();
+	const { messages, setMessage,selectedConversation,url} = useConversation();
   
 	const isGroup=selectedConversation?.isGroup!==undefined?true:false;
   
@@ -18,7 +18,7 @@ const useGetMessages = () => {
 			try {
                 const token=localStorage.getItem('token');
             // console.log(`http://localhost:5000/api/${isGroup?"group":"message"}/getMessage/${selectedConversation._id}`)
-             const res=await fetch(`http://localhost:5000/api/${isGroup?"group":"message"}/getMessage/${selectedConversation._id}`,{
+             const res=await fetch(`${url}/api/${isGroup?"group":"message"}/getMessage/${selectedConversation._id}`,{
               method:'GET',
               headers: {
                     'Authorization':token,

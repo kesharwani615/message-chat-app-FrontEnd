@@ -11,8 +11,6 @@ const useListenMessages = () => {
 
 	const isGroup=selectedConversation?.isGroup!==undefined?true:false;
 
-	console.log("selectedConversation:",selectedConversation?.groupName)
-
 	useEffect(() => {
 		socket?.on("newMessage", (newMessage) => {
 		// console.log("newMessage:",newMessage);

@@ -1,17 +1,19 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/useAuthContext";
+import useConversation from "../zustand/useConversation";
 
 const useLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuth } = useAuthContext();
+	const {url} = useConversation();
 
 	const login = async (username, password) => {
 		const success = handleInputErrors(username, password);
 		if (!success) return;
 		setLoading(true);
 		try {
-			const res = await fetch("http://localhost:5000/api/auth/login", {
+			const res = await fetch(`${url}/api/auth/login`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
