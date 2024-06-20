@@ -75,7 +75,7 @@ const Login = () => {
           </form>
         </div>
       <div className='mt-5 w-48'>
- 
+     <Link to={'/signup'}>signup</Link>
     </div>
       </div>
       </div>

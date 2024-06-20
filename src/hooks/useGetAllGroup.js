@@ -14,7 +14,7 @@ const useGetAllGroup = () => {
 
     useEffect(()=>{
         const getAllGrp= async ()=>{
-         const token=localStorage.getItem('token');
+         const {token}=JSON.parse(localStorage.getItem('chat-user'));
          try {
            const res=await fetch(`${url}/api/group/allGroups`,{
              method:'GET',

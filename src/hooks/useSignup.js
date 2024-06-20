@@ -22,6 +22,8 @@ const useSignup = () => {
 				body: JSON.stringify({ fullName, username, password, gender }),
 			});
 
+			console.log("res:",res);
+
 			const data = await res.json();
             console.log(data)
 			if (data.error) {

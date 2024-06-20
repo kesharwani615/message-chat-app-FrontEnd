@@ -14,14 +14,18 @@ const useGetConversation = () => {
 
     useEffect(()=>{
       const getAllUser= async ()=>{
-      const token=localStorage.getItem('token');
+      const {token}=JSON.parse(localStorage.getItem('chat-user'));
+      console.log("token:::::", token);
       try {
-        const res=await fetch(`${url}/api/user/`,{
+        const res = await fetch(`${url}/api/user/`,{
           method:'GET',
           headers: {
             'Authorization':token,
         }
         });
+
+        console.log("Res:",res)
+
         const data = await res.json();
         console.log("data:",data);
 

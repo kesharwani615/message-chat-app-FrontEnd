@@ -71,7 +71,7 @@ export function NotificationDialog({groupName}) {
           </Typography>
         </DialogHeader>
         {
-        conversations.map((conversation)=>{
+        conversations.length>0 && conversations?.map((conversation)=>{
              return( 
               <>
               <div onClick={()=>handleCollectUser(conversation._id)} className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer`}>

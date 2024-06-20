@@ -8,16 +8,14 @@ import { useSocketContext } from '../context/SocketContext';
 function useSendMessages() {
   const { socket } = useSocketContext();
    const [loading,setLoading]=useState(false);
-   const {messages,setMessage,selectedConversation}=useConversation();
+   const {messages,setMessage,selectedConversation,url}=useConversation();
     
    const isGroup=selectedConversation?.isGroup!==undefined?true:false;
 
-  //  console.log("messages:",messages)
-
    const sendMessage=async(getMessage)=>{
     console.log(getMessage);
-    const token=localStorage.getItem('token');
-
+    const {token}=JSON.parse(localStorage.getItem('chat-user'));
+    console.log(`${url}/api/${isGroup?"group":"message"}/sendMessage/${selectedConversation._id}`)
     try {
     const res = await fetch(`${url}/api/${isGroup?"group":"message"}/sendMessage/${selectedConversation._id}`,{
     method: "POST",

@@ -8,7 +8,8 @@ const useConversation=create((set)=>({
     setMessage:(messages) => set({messages}),
     isGroup:false,
     setIsGroup:(isGroup)=>set({isGroup}),
-    url:"https://message-chat-app-backend.onrender.com",
+    // url:"https://message-chat-app-backend.onrender.com",
+    url:"http://localhost:5000",
     setBaseUrl:(url)=>set({url}),
 
 

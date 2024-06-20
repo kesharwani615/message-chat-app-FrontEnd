@@ -15,7 +15,7 @@ const useListenMessages = () => {
 		socket?.on("newMessage", (newMessage) => {
 		// console.log("newMessage:",newMessage);
 		// console.log("messages:",messages);
-		messages.message.push(newMessage);
+		messages?.message?.push(newMessage);
 
 		setMessage({...messages});
 		// console.log("messages:",messages);

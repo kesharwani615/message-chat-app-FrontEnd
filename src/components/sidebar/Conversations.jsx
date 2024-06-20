@@ -6,27 +6,28 @@ import Conversation from "./Conversation";
 import { useAuthContext } from "../../context/useAuthContext";
 
 const Conversations = () => {
-	const {loading,conversations} = useGetConversation();
-	const {grpConversations}= useGetAllGroup();
-	const {AuthUser} = useAuthContext()
+	let {loading,conversations} = useGetConversation();
+	let {grpConversations}= useGetAllGroup();
+	let {AuthUser} = useAuthContext()
     
-	// console.log("grpConversations:",grpConversations)
-	// console.log("AuthUser:",AuthUser)
+	let allChatOrGrp;
 
-	// const userId=AuthUser._id;
-	// grpConversations.map((grp)=>{
-	// 	grp.participants.filter((id)=>)
-	// })
+	console.log(conversations,grpConversations)
+	if(conversations?.message)
+		conversations=[];
 
-    const allChatOrGrp=[...conversations,...grpConversations];
+	if(grpConversations?.message)
+		grpConversations=[];
+
+	if(conversations.getAllUser)
+	conversations = conversations.getAllUser;
+
+	allChatOrGrp=[...conversations,...grpConversations];
 	
-	// console.log(grpConversations);
-    // console.log("conversation:",conversations);
-	// console.log("allChatOrGrp:",allChatOrGrp)
 	return (
 		<div className='py-2 flex flex-col overflow-auto'>
 			{
-             allChatOrGrp.map((conversation)=>{
+             allChatOrGrp && allChatOrGrp.map((conversation)=>{
              return( 
 				<Conversation 
 				key={conversation._id} 
