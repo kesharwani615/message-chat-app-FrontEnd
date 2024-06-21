@@ -12,8 +12,6 @@ const Conversation = ({conversation}) => {
 	const { onlineUsers } = useSocketContext();
 	const isOnline = onlineUsers.includes(conversation._id);
 
-// console.log("conversation:",conversation)
-
 	return (
 		<>
 			<div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer

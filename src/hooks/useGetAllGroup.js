@@ -23,11 +23,8 @@ const useGetAllGroup = () => {
            }
            });
            const data = await res.json();
-           console.log("groups:",data);
+          //  console.log("groups:",data);
    
-           if(data.error){
-             throw new Error(data.error); 
-           }
            setGrpConversations(data);
            
         }catch(error){

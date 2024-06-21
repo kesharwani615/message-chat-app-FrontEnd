@@ -15,7 +15,7 @@ const useGetConversation = () => {
     useEffect(()=>{
       const getAllUser= async ()=>{
       const {token}=JSON.parse(localStorage.getItem('chat-user'));
-      console.log("token:::::", token);
+
       try {
         const res = await fetch(`${url}/api/user/`,{
           method:'GET',
@@ -24,10 +24,7 @@ const useGetConversation = () => {
         }
         });
 
-        console.log("Res:",res)
-
         const data = await res.json();
-        console.log("data:",data);
 
         if(data.error){
           throw new Error(data.error); 

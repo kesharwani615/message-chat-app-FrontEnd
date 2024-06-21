@@ -7,11 +7,11 @@ import useConversation from "../../zustand/useConversation";
 
 const Message = ({ message }) => { 
 
-	console.log("message:",message)
+	// console.log("message:",message)
   
   const {Auth,AuthUser } = useAuthContext();
 	const { selectedConversation } = useConversation();
-	console.log("selected:",selectedConversation)
+	// console.log("selected:",selectedConversation)
 //    console.log("authuser:",AuthUser)
 //    console.log("auth:",Auth)
 //    console.log(typeof(message.SenderId) ,typeof(AuthUser._id))

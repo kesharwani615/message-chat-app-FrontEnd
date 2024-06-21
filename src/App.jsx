@@ -9,6 +9,7 @@ import { Toaster } from 'react-hot-toast'
 import { useAuthContext } from './context/useAuthContext.jsx'
 import { useEffect, useState } from 'react'
 import axios from "axios";
+import NotFound from './404NotFound.jsx'
 
 
 function App() {
@@ -22,6 +23,7 @@ const {Auth,setAuth}=useAuthContext();
       <Route path='/' element={Auth ?<Home/>:<Navigate to={'/login'}/>} />
       <Route path='/signup' element={Auth?<Navigate to={'/'}/>:<Signup/>} />
       <Route path='/login' element={Auth?<Navigate to={'/'}/>:<Login/>} />
+      <Route path='*' element={<NotFound/>}/>
       
     </Routes>
     <Toaster/>  

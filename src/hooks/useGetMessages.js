@@ -18,7 +18,7 @@ const useGetMessages = () => {
 			try {
 				const {token}=JSON.parse(localStorage.getItem('chat-user'));
 				// console.log(`http://localhost:5000/api/${isGroup?"group":"message"}/getMessage/${selectedConversation._id}`)
-             const res=await fetch(`${url}/api/${isGroup?"group":"message"}/getMessage/${selectedConversation._id}`,{
+             const res=await fetch(`${url}/api/${isGroup?"group":"message"}/getMessage/${selectedConversation?._id}`,{
               method:'GET',
               headers: {
                     'Authorization':token,
@@ -26,8 +26,8 @@ const useGetMessages = () => {
                  })
                 const data = await res.json();
 				// const {message}=data?.message;
-				console.log("dataGet:",{message:data?.message?.messages});
-				console.log("dataGet20:",data);
+				// console.log("dataGet:",{message:data?.message?.messages});
+				// console.log("dataGet20:",data);
 
 				if(isGroup){
 					setMessage(res.status==200?{message:data?.message?.messages}:null);

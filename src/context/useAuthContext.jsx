@@ -11,12 +11,14 @@ export const useAuthContext = () =>{
 }
 
 export const AuthContextArea = ({children}) => {
-  console.log(JSON.parse(localStorage.getItem("userDetail")));
-  console.log(localStorage.getItem("token"));
+  
+  const storedData = localStorage.getItem("chat-user");
+  const parsedData = storedData ? JSON.parse(storedData) : {};
+  
+  const { token = null, userDetail = null } = parsedData;  
 
-  const user=JSON.parse(localStorage.getItem("userDetail"))
-  const [Auth,setAuth]=useState(localStorage.getItem("token") || null);
-   const [AuthUser,setAuthUser]=useState(user || null);
+    const [Auth,setAuth]=useState( token || null);
+   const [AuthUser,setAuthUser]=useState(userDetail || null);
 
 
   return (
