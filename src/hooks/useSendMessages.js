@@ -7,10 +7,9 @@ import { useSocketContext } from '../context/SocketContext';
 
 function useSendMessages() {
   const { socket } = useSocketContext();
-   const [loading,setLoading]=useState(false);
-   const {messages,setMessage,selectedConversation,url}=useConversation();
-    
-   const isGroup=selectedConversation?.isGroup!==undefined?true:false;
+  const [loading , setLoading] = useState();
+  const {setMessage,selectedConversation,url} = useConversation()
+  const isGroup=selectedConversation?.isGroup!==undefined?true:false;
 
    const sendMessage=async(getMessage)=>{
     console.log(getMessage);

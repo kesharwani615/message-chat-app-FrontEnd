@@ -5,7 +5,7 @@ import useConversation from "../zustand/useConversation";
 
 const useLogin = () => {
 	const [loading, setLoading] = useState(false);
-	const { setAuth } = useAuthContext();
+	const { setAuth,setAuthUser } = useAuthContext();
 	const {url} = useConversation();
 
 	const login = async (username, password) => {
@@ -19,14 +19,13 @@ const useLogin = () => {
 				body: JSON.stringify({ username, password }),
 			});
 			const data = await res.json();
-			console.log(data);
-			console.log(data.token);
 			if (data.error) {
 				throw new Error(data.error);
 			}
-
+            console.log(data)
 			localStorage.setItem("chat-user", JSON.stringify(data));
-			setAuth(JSON.stringify(data));
+			setAuth(data?.token);
+			setAuthUser(data?.userDetail)
 		} catch (error) {
 			toast.error(error.message);
 		} finally {

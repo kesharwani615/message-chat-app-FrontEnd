@@ -11,14 +11,9 @@ export const useAuthContext = () =>{
 }
 
 export const AuthContextArea = ({children}) => {
-  
-  const storedData = localStorage.getItem("chat-user");
-  const parsedData = storedData ? JSON.parse(storedData) : {};
-  
-  const { token = null, userDetail = null } = parsedData;  
 
-    const [Auth,setAuth]=useState( token || null);
-   const [AuthUser,setAuthUser]=useState(userDetail || null);
+   const [Auth,setAuth]=useState('');
+   const [AuthUser,setAuthUser]=useState('');
 
 
   return (

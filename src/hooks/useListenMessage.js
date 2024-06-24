@@ -11,8 +11,10 @@ const useListenMessages = () => {
 
 	const isGroup=selectedConversation?.isGroup!==undefined?true:false;
 
+	console.log("socket:",socket);
+
 	useEffect(() => {
-		socket?.on("newMessage", (newMessage) => {
+		socket && socket?.on("newMessage", (newMessage) => {
 		// console.log("newMessage:",newMessage);
 		// console.log("messages:",messages);
 		messages?.message?.push(newMessage);
@@ -22,11 +24,11 @@ const useListenMessages = () => {
 		});
 
         if(isGroup){
-			socket?.emit('join_room',selectedConversation?.groupName);
+			socket && socket?.emit('join_room',selectedConversation?.groupName);
 		}
 
-		socket.on('receive-message',(data)=>{
-			// console.log('receive-message:', data);
+		socket && socket.on('receive-message',(data)=> { 
+			console.log('receive-message:', data);
     if (messages && messages.message) {
     //   console.log(messages.message);
       const newMessages = [...messages.message, data];
@@ -35,12 +37,12 @@ const useListenMessages = () => {
     } else {
       console.log("messages is undefined");
     }
-		})
+	})
 
 
 	return () => {
-	socket?.off("newMessage");
-	socket?.off("receive-message");
+	socket && socket?.off("newMessage");
+	socket && socket?.off("receive-message");
 	}
 	}, [socket, setMessage, messages]);
 

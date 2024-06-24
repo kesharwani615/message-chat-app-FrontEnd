@@ -12,7 +12,7 @@ const Messages = () => {
     useListenMessages();
     const lastMessageRef = useRef();
 
-    // console.log("MMessages:",messages.message)
+    // console.log("MMessages:",messages)
 
     useEffect(() => {
         if (messages && messages.message) {
@@ -21,15 +21,16 @@ const Messages = () => {
             },100);
         }
     }, [messages]);
+    // console.log(messages);
 
     return (
         <div className='px-4 flex-1 overflow-auto'>
-            {!loading && messages && messages.message && messages.message.length > 0 && (
-                messages.message.map((useMessage) => {
+            {!loading && messages && messages.message && messages?.message?.length > 0 && (
+                Array.isArray( messages?.message) && messages?.message?.length > 0 && messages?.message?.map((useMessage) => {
                     // console.log("useMessage:",useMessage)
 					return(
                     <div key={useMessage?._id} ref={lastMessageRef}>
-                        <Message message={useMessage} />
+                        <Message message={useMessage}/> 
                     </div>
 					)
                 })

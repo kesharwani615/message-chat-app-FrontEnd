@@ -26,9 +26,11 @@ const useGetConversation = () => {
 
         const data = await res.json();
 
-        if(data.error){
-          throw new Error(data.error); 
-        }
+        // console.log("data:",data)
+
+        // if(data.error){
+        //   throw new Error(data.error); 
+        // }
         setConversations(data);
 
       } catch (error) {
