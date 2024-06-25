@@ -19,6 +19,8 @@ export function NotificationDialog({groupName}) {
   const [open, setOpen] = useState(false);
   const [collect,setCollect] = useState([]);
  
+  console.log("conversations:",conversations)
+
   let isSelected;
   const handleCollectUser=(id)=>{
     if(!collect.includes(id))
@@ -64,17 +66,18 @@ export function NotificationDialog({groupName}) {
  <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" 
       onClick={handleOpen}
       >Create Group</button>   
-      <Dialog className='bg-current	 w-70 h-90' open={open} handler={handleOpen}>
+      <div className='w-full flex justify-center items-center'>
+      <Dialog className='bg-gray-300 w-[600px] h-90' open={open} handler={handleOpen}>
         <DialogHeader>
-          <Typography variant="h5" color="white">
+          <Typography variant="h5" color="black">
            select the people
           </Typography>
         </DialogHeader>
         {
-        conversations.length>0 && conversations?.map((conversation)=>{
-             return( 
+        conversations?.getAllUser?.length>0 && conversations.getAllUser?.map((conversation)=>{
+             return(
               <>
-              <div onClick={()=>handleCollectUser(conversation._id)} className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer`}>
+              <div onClick={()=>handleCollectUser(conversation._id)} className={` flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer`}>
                 <div>
                   <div className='w-12 rounded-full'>
                     <img
@@ -84,9 +87,9 @@ export function NotificationDialog({groupName}) {
                   </div>
                 </div>
         
-                <div className='flex flex-col flex-1'>
+                <div className=' flex flex-col flex-1'>
                   <div className='flex gap-3 justify-between'>
-                    <p className='font-bold text-gray-200'>{conversation.fullName||conversation.groupName}</p>
+                    <p className='font-bold text-black'>{conversation.fullName||conversation.groupName}</p>
                     <span className='text-xl'>🎃</span>
                   </div>
                 </div>
@@ -101,11 +104,12 @@ export function NotificationDialog({groupName}) {
           <Button variant="text" color="blue" onClick={handleOpen}>
             close
           </Button>
-          <Button variant="gradient" onClick={handleGroupName}>
+          <Button variant="text" color="blue" onClick={handleGroupName}>
             Create
           </Button>
         </DialogFooter>
       </Dialog>
+      </div>
     </>
   );
 }

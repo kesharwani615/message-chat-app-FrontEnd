@@ -41,7 +41,7 @@ useEffect(()=>{
     const checkTokenExpiration = () => {
       const currentTimeInSeconds = Math.floor(Date.now() / 1000);
       const diffInSeconds = Math.floor(decodedToken.exp - currentTimeInSeconds);
-      console.log(diffInSeconds);
+      // console.log(diffInSeconds);
       setdiffSeconds(diffInSeconds);
   
       if (diffInSeconds <= 0) {
