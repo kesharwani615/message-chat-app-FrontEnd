@@ -8,7 +8,7 @@ import { useSocketContext } from '../context/SocketContext';
 function useSendMessages() {
   const { socket } = useSocketContext();
   const [loading , setLoading] = useState();
-  const {setMessage,selectedConversation,url} = useConversation()
+  const {messages,setMessage,selectedConversation,url} = useConversation()
   const isGroup=selectedConversation?.isGroup!==undefined?true:false;
 
    const sendMessage=async(getMessage)=>{
@@ -32,12 +32,13 @@ function useSendMessages() {
     }else{
       actData=data;
     }
-    // console.log("res:",res);
+    console.log("res:",res);
+    console.log("res:",data);
 
     if (data.error) throw new Error(data.error);
 
-    messages.message.push(actData)
     console.log("messagesMy:",messages);
+    messages?.message?.push(actData)
 
     setMessage({...messages})
     if(isGroup){
@@ -48,6 +49,7 @@ function useSendMessages() {
     }
 
     } catch (error) {
+      console.log('===:',error)
       toast.error('Error:',error);
     }finally{
         setLoading(false);
